@@ -19,14 +19,33 @@ Plugin 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'hoob3rt/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
-set background=dark
+set background=transparent
 colorscheme palenight
 syntax on
 
+" LuaLine
+require('lualine').setup()
+options = {theme = 'palenight'}
+
 let g:lightline = { 'colorscheme': 'palenight' }
 let g:airline_theme='onedark'
+
+au ColorScheme * hi Normal ctermbg=none guibg=none
+au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
